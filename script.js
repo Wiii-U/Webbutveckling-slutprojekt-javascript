@@ -22,46 +22,46 @@ const searchGenre = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKe
 
 // Get Movie Image
 const imgURL = "https://image.tmdb.org/t/p/w500";
+
+// Get Filter variables
 const searchText = document.getElementById("txtSearch");
 const searchFilter = document.getElementById("filterMovies");
 const resultTitle = document.getElementById("resultTitle");
-const trendingMoviesFilter = document.getElementById("pickTrending");
-const pickTrendingTxt = document.getElementById("pickTrendingTxt");
-pickTrendingTxt.style.display = "none";
+const trendingMoviesFilter = document.getElementById("filterBtn");
+const currentCategory = document.getElementById("currentCategory");
+
+
+currentCategory.style.display = "none";
 resultTitle.style.display = "none";
 
-trendingMoviesFilter.onclick = async function (event) {
-    if (trendingMoviesFilter.checked == true) {
-        event.preventDefault()
 
-        var results = await searchTrending(trendingMovieURL); 
-        
-        renderPopularResults(results);
-        pickTrendingTxt.style.display = "block";
-    }
+trendingMoviesFilter.onclick = async function (event) {
+  event.preventDefault()
+
+  var results = await searchTrending(trendingMovieURL); 
+  
+  renderPopularResults(results);
+  currentCategory.style.display = "block";
 }
 
 searchText.onkeydown = async function (event) {
-    if (searchText.value != "") {
-        if (event.key === "Enter") {
-            event.preventDefault()
+  if (searchText.value != "") {
+      if (event.key === "Enter") {
+          event.preventDefault()
 
-            let searchTerm = searchText.value // Hämtar det som står i sökrutan
-            console.log("Kommer söka efter", searchTerm);
+          let searchTerm = searchText.value // Hämtar det som står i sökrutan
+          console.log("Kommer söka efter", searchTerm);
 
-            // Det här anropas funktionen för att hämta info från ett API.
-            // Vi väntar på svaret med await
-            var results = await search(searchTerm);
+          // Det här anropas funktionen för att hämta info från ett API.
+          // Vi väntar på svaret med await
+          var results = await search(searchTerm);
 
-            renderResults(results);
-            
-            resultTitle.style.display = "block";
-            searchText.value = "";
-        }
-    }
-    else {
-        window.alert("Type something in order to get a searchresult.")
-    }
+          renderResults(results);
+          
+          resultTitle.style.display = "block";
+          searchText.value = "";
+      }
+  }
 }
 
 async function searchTrending(trendingSearchUrl) {
@@ -139,3 +139,12 @@ function renderPopularResults(results) {
       resultDiv.insertAdjacentHTML("beforeend","<div id='objectContainer'>" + "<div id='objectImg'>" +"<img src=" + imgPath +" width:25%;>" +"</div>" + "<div id='objectInfo'>" + object.original_title + "</div>"+ "</div>")
     }
 }
+
+$("#inpt_search").on('focus', function () {
+	$(this).parent('label').addClass('active');
+});
+
+$("#inpt_search").on('blur', function () {
+	if($(this).val().length == 0)
+		$(this).parent('label').removeClass('active');
+});
