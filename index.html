@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Film</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <header>
+      <h1>DBASMDN</h1>
+      <h2 id="currentCategory">Current Popular Movies</h2>
+    </header>
+    <main>
+      <div class="searchBar">
+        <div>
+          <input type="checkbox" id="pickTrending" />
+          <label id="pickTrendingTxt" for="pickTrending">Click to view Trending Movies</label>
+        </div>
+        <div>
+          <select name="filter" id="filterMovies" class="rounded">
+            <option value="none">None</option>
+            <option value="movie">Movie</option>
+            <option value="celeb">Celeb</option>
+            <option value="tvShows">TV Show</option>
+            <option value="genres">Genre</option>
+          </select>
+
+          <select name="filter" id="genreList" class="rounded"></select>
+          <form>
+            <input type="text" id="txtSearch" placeholder="Search for movies" />
+            <button id="searchItemButton" class="shortBtn">Search</button>
+          </form>
+      </div>
+          <!--Results-->
+          <h2 id="resultTitle">Results</h2>
+          <div class="searchResults">
+            <div id="searchresults"></div>
+          </div>
+        </div>
+    </main>
+    <footer>
+    </footer>
+    <script src="script.js" defer></script>
+  </body>
+</html>
