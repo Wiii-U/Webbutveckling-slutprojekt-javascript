@@ -81,7 +81,7 @@ async function search(searchString) {
     searchUrl = searchMovie;
   }
   else if (searchFilter.value === "tvShows") {
-    searchUrl = searchTvShow;
+    searchUrl = searchTvShow + `${searchString}`;
   }
   else if (searchFilter.value === "genres") {
     searchUrl = searchGenre;
