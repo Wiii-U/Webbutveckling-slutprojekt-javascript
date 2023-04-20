@@ -78,20 +78,18 @@ async function search(searchString) {
   // Använd funktionen fetch för att anropa ett API med rätt parametrar.
   var searchUrl = `https://api.themoviedb.org/3/search/movie?query=${searchString}&api_key=${apiKey}`
   if (searchFilter.value === "movie") {
-    searchUrl = searchMovie;
+    searchUrl = searchMovie + `${searchString}`;
   }
   else if (searchFilter.value === "tvShows") {
     searchUrl = searchTvShow + `${searchString}`;
   }
   else if (searchFilter.value === "genres") {
-    searchUrl = searchGenre;
+    searchUrl = searchGenre + `${searchString}`;
   }
   else if (searchFilter.value === "celeb") {
-    searchUrl = searchPerson;
+    searchUrl = searchPerson + `${searchString}`;
   }
-  else {
-    searchUrl = searchUrl
-  }
+  
   console.log("Den URL vi kommer anropa: ", searchUrl)
 
   //Här används URLen för att göra anrop med den inbyggda funktionen fetch()

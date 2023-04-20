@@ -11,14 +11,41 @@
 
   <body>
     <header>
-      <h1>DBASMDN</h1>
+      <nav>
+        <div class="navbar">
+          <ul class="navbar-menu">
+            <li class="nav-container-items">               
+                <input id="burger" type="checkbox" />
+                <label for="burger">
+                  <span id="burger"></span>
+                  <span id="burger"></span>
+                  <span id="burger"></span>
+                </label>
+                <nav>
+                  <ul id="menu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Infoa></a></li>
+                    <li><a href="#">Contact</a></li>
+                  </ul>
+                </nav>
+            </li> 
+            <li class="nav-container-items"><h1>TheaterHub</h1></li>
+            <li class="nav-container-items"><button id="filterBtn" class="glitchBtn" role="button">Popular</button></li>
+            <li class="nav-container-items">
+              <form>
+                  <label class="search" for="inpt_search">
+                    <input id="txtSearch" type="text" />
+                  </label>
+              </form>
+            </li>
+          </ul>
+        </div>
+      </nav>
       <h2 id="currentCategory">Current Popular Movies</h2>
     </header>
     <main>
       <div class="searchBar">
-        <div>
-          <button id="filterBtn" class="glitchBtn" role="button">Popular</button>
-        </div>
         <div>
           <!--FilterCategory-->
           <select name="filter" id="filterMovies" class="rounded">
@@ -36,16 +63,7 @@
             <option value="Drama">Drama</option>
             <option value="Fantasy">Fantasy</option>
           </select>
-          <form>
-            <div class="cntr">
-              <div class="cntr-innr">
-                <label class="search" for="inpt_search">
-                  <input id="txtSearch" type="text" />
-                </label>
-                <p>Hover to see the magic.</p>
-              </div>
-            </div>
-          </form>
+
       </div>
           <!--Results-->
           <h2 id="resultTitle">Results</h2>
@@ -54,9 +72,7 @@
           </div>
         </div>
     </main>
-    <footer>
-      <div class="bottomBackground"></div>
-    </footer>
+    <footer>@all rights reserved by William Ingo 2023</footer>
     <script src="script.js" defer></script>
   </body>
 </html>
