@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Film Sida</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,28 +16,50 @@
         <div class="navbar">
           <ul class="navbar-menu">
             <li class="nav-container-items">               
-                <input id="burger" type="checkbox" />
-                <label for="burger">
-                  <span id="burger"></span>
-                  <span id="burger"></span>
-                  <span id="burger"></span>
-                </label>
-                <nav>
-                  <ul id="menu">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Infoa></a></li>
-                    <li><a href="#">Contact</a></li>
-                  </ul>
-                </nav>
+              <!-- The overlay -->
+              <div id="myNav" class="overlay">
+
+                <!-- Button to close the overlay navigation -->
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+                <!-- Overlay content -->
+                <div class="overlay-content">
+                  <a href="#">About</a>
+                  <a href="#">Services</a>
+                  <a href="#">Clients</a>
+                  <a href="#">Contact</a>
+                </div>
+
+              </div>
+
+              <!-- Use any element to open/show the overlay navigation menu -->
+              <span class="burgerOpenBtn" style="cursor:pointer" onclick="openNav()">&#9776;</span>
             </li> 
-            <li class="nav-container-items"><h1>TheaterHub</h1></li>
+            <li class="nav-container-items"><a href="index.html"><h1 id="Title">TheaterHub</h1></a></li>
             <li class="nav-container-items"><button id="filterBtn" class="glitchBtn" role="button">Popular</button></li>
             <li class="nav-container-items">
               <form>
                   <label class="search" for="inpt_search">
                     <input id="txtSearch" type="text" />
                   </label>
+                  <div class="filterContainer">
+                    <!--FilterCategory-->
+                    <select name="filter" id="filterMovies" class="rounded" aria-placeholder="Filter by Category">
+                      <option value="none">None</option>
+                      <option value="movie">Movie</option>
+                      <option value="celeb">Celeb</option>
+                      <option value="tvShows">TV Show</option>
+                      <option value="genres">Genre</option>
+                    </select>
+                    <!--FilterGenre-->
+                    <select name="filter" id="genreList" class="rounded" aria-placeholder="Filter by Genre">
+                      <option value="None">None</option>
+                      <option value="Action">Action</option>
+                      <option value="Comedy">Comedy</option>
+                      <option value="Drama">Drama</option>
+                      <option value="Fantasy">Fantasy</option>
+                    </select>
+                  </div>
               </form>
             </li>
           </ul>
@@ -46,31 +69,12 @@
     </header>
     <main>
       <div class="searchBar">
-        <div>
-          <!--FilterCategory-->
-          <select name="filter" id="filterMovies" class="rounded">
-            <option value="none">None</option>
-            <option value="movie">Movie</option>
-            <option value="celeb">Celeb</option>
-            <option value="tvShows">TV Show</option>
-            <option value="genres">Genre</option>
-          </select>
-          <!--FilterGenre-->
-          <select name="filter" id="genreList" class="rounded">
-            <option value="None">None</option>
-            <option value="Action">Action</option>
-            <option value="Comedy">Comedy</option>
-            <option value="Drama">Drama</option>
-            <option value="Fantasy">Fantasy</option>
-          </select>
-
-      </div>
           <!--Results-->
           <h2 id="resultTitle">Results</h2>
           <div class="searchResults">
             <div id="searchresults"></div>
           </div>
-        </div>
+      </div>
     </main>
     <footer>@all rights reserved by William Ingo 2023</footer>
     <script src="script.js" defer></script>

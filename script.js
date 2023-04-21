@@ -42,6 +42,7 @@ trendingMoviesFilter.onclick = async function (event) {
   
   renderPopularResults(results);
   currentCategory.style.display = "block";
+  resultTitle.style.display = "none";
 }
 
 searchText.onkeydown = async function (event) {
@@ -60,7 +61,8 @@ searchText.onkeydown = async function (event) {
           
           resultTitle.style.display = "block";
           searchText.value = "";
-      }
+          currentCategory.style.display = "none";
+    }
   }
 }
 
@@ -127,6 +129,7 @@ function renderPopularResults(results) {
 
     console.log("resultatet: ", results);
     let allObjects = results.results;
+    resultDiv.innerHTML = "";
 
     // Den här loopen används för att lägga in något i DOMen för varje objekt (film) i resultatet.
     for (let index = 0; index < allObjects.length; index++) {
@@ -138,11 +141,12 @@ function renderPopularResults(results) {
     }
 }
 
-$("#inpt_search").on('focus', function () {
-	$(this).parent('label').addClass('active');
-});
+/* Open */
+function openNav() {
+  document.getElementById("myNav").style.height = "100%";
+}
 
-$("#inpt_search").on('blur', function () {
-	if($(this).val().length == 0)
-		$(this).parent('label').removeClass('active');
-});
+/* Close */
+function closeNav() {
+  document.getElementById("myNav").style.height = "0%";
+}
