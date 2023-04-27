@@ -51,23 +51,32 @@ ul.navbar-menu {
   overflow: hidden;
 }
 
+
 .nav-container-items {
   display: inline;
   padding: 8px 16px;
+}
+
+@media screen and (max-width:600px){
+  ul.navbar-menu {
+    flex-direction: column;
+  }
 }
 
 #Title {
   padding: 8px 16px;
   height: 100%;
   width: 100%;
-  font-size: 1.6rem;
+  font-size: 2rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 /* The Overlay (background) */
 .overlay {
   /* Height & width depends on how you want to reveal the overlay (see JS below) */   
-  height: 100%;
-  width: 0;
+  height: 0;
+  width: 100%;
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   left: 0;
@@ -204,44 +213,33 @@ main {
     display: inline-block;
     position: relative;
     height: 35px;
-    width: 35px;
+    width: 200px;
     box-sizing: border-box;
     margin: 0px 8px 7px 0px;
     padding: 7px 9px 0px 9px;
-    border: 3px solid #000000;
-    border-radius: 25px;
-    transition: all 200ms ease;
+    border: 2px solid #000000;
+    border-radius: 3px;
     cursor: text;
 }
 
-.search:after {
-    content: "";
-    position: absolute;
-    width: 3px;
-    height: 20px;
-    right: -5px;
-    top: 21px;
-    background: #000000;
-    border-radius: 3px;
-    transform: rotate(-45deg);
-    transition: all 200ms ease;
-    color: black;
+#txtSearch:focus::placeholder {
+  color: transparent;
 }
 
-.search.active,
-.search:hover {
-    width: 200px;
-    margin-right: 0px;
-}    
-
 #txtSearch {
-    width: 100%;
-    border: none;
-    box-sizing: border-box;
-    font-size: 15px;
-    color: inherit;
-    background: transparent;
-    outline-width: 0px;
+  width: 100%;
+  border: none;
+  box-sizing: border-box;
+  font-size: 15px;
+  color: inherit;
+  background: transparent;
+  outline-width: 0px;
+}
+
+.filterContainer {
+  padding: 8px 16px;
+  display: flex;
+  flex: row center center center;
 }
 
 .glitchBtn,
@@ -354,7 +352,7 @@ footer {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 0;
+  margin-bottom: 10px;
   margin-top: auto;
   flex-direction: column;
   justify-content: center;
