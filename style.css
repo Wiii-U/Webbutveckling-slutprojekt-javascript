@@ -37,7 +37,7 @@ a {
   display: block;
   width: 100%;
   height: fit-content;
-  box-shadow: 0 1px 4px rgba(137, 153, 170, 0.15);
+  box-shadow: 0 1px 4px rgba(137, 153, 170, 0.37);
 }
 
 ul.navbar-menu {
@@ -50,7 +50,6 @@ ul.navbar-menu {
   align-items: center;
   overflow: hidden;
 }
-
 
 .nav-container-items {
   display: inline;
@@ -148,9 +147,9 @@ main {
 }
 
 .rounded {
-    color: #000000;
-    border-color: #000000;
-    border-width: 2px;
+  color: #000000;
+  border-color: #000000;
+  border-width: 2px;
 }
 
 
@@ -166,6 +165,41 @@ main {
 
 #objectContainer img {
     width: 80%;
+}
+
+#objectContainer img:hover {
+  width: 90%;
+  cursor: pointer;
+}
+
+#objectInfoContainer {
+  width: 70%;
+  height: 60%;
+  opacity: 0;
+  display: inline;
+  z-index: 10;
+  color: #000000;
+  background-color: white;
+  font-size: 24px;
+  border-width: 4px;
+  border:4px double black;
+}
+
+#objectInfoImg {
+  float: left;
+  width: 25%;
+  display: block;
+}
+
+#objectInfoTitle {
+  display: block;
+  float: left;
+  width: 15%;
+}
+
+#objectInfoPlot {
+  float: left;
+  width: 70%;
 }
 
 #searchresults {
@@ -215,7 +249,6 @@ main {
     height: 35px;
     width: 200px;
     box-sizing: border-box;
-    margin: 0px 8px 7px 0px;
     padding: 7px 9px 0px 9px;
     border: 2px solid #000000;
     border-radius: 3px;
@@ -236,10 +269,15 @@ main {
   outline-width: 0px;
 }
 
-.filterContainer {
-  padding: 8px 16px;
+form {
   display: flex;
-  flex: row center center center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.filterContainer {
+  display: block;
 }
 
 .glitchBtn,
