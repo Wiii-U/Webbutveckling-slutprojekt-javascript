@@ -173,19 +173,23 @@ main {
 }
 
 #objectInfoContainer {
-  width: 70%;
-  height: 60%;
+  width: 0%;
+  height: 0%;
   opacity: 0;
   display: inline;
   z-index: 10;
   color: #000000;
   background-color: white;
   font-size: 24px;
-  border-width: 4px;
-  border:4px double black;
 }
 
 #objectInfoImg {
+  float: left;
+  width: 25%;
+  display: block;
+}
+
+#objectInfoImg img {
   float: left;
   width: 25%;
   display: block;
