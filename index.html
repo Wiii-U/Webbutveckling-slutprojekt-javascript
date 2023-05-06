@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TheaterHub</title>
+    <title>Homepage</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,9 +11,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Josefin+Sans:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
     <header>
+      <a href="index.html"><h1 id="Title">TheaterHub</h1></a>
       <nav>
         <div class="navbar">
           <ul class="navbar-menu">
@@ -26,8 +28,7 @@
 
                 <!-- Overlay content -->
                 <div class="overlay-content">
-                  <a href="index 2.html">About</a>
-                  <a href="index 3.html">Contact</a>
+                  <a href="index 3.html">About</a>
                 </div>
 
               </div>
@@ -35,25 +36,25 @@
               <!-- Use any element to open/show the overlay navigation menu -->
               <span class="burgerOpenBtn" style="cursor:pointer" onclick="openBurgNav()">&#9776;</span>
             </li> 
-            <li class="nav-container-items"><a href="index.html"><h1 id="Title">TheaterHub</h1></a></li>
-            <li class="nav-container-items"><button id="filterBtn" class="glitchBtn" role="button">Popular</button></li>
+            <!-- <li class="nav-container-items"><button id="filterBtn" class="glitchBtn" role="button">Popular</button></li> -->
             <li class="nav-container-items">
               <form>
-                  <label class="search" for="inpt_search">
-                    <input id="txtSearch" type="text" placeholder="Search..."/>
-                  </label>
-                  <div class="filterContainer">
-                    <!--FilterCategory-->
+                <!--FilterCategory-->
+                <div class="filterContainer">
                     <select name="filter" id="filterMovies" class="rounded">
-                      <option value="" selected>Filter</option>
-                      <option value="none">None</option>
-                      <option value="movie">Movie</option>
-                      <option value="celeb">Celeb</option>
-                      <option value="tvShows">TV Show</option>
+                      <option value="all">All</option>
+                      <option value="movie">Movies</option>
+                      <option value="celeb">Celebs</option>
+                      <option value="tvShows">Shows</option>
                     </select>
-                  </div>
+                </div>
+                <label class="search" for="inpt_search">
+                  <input id="txtSearch" type="text" placeholder="Search..."/>
+                </label>
+                <button id="searchBtn" type="submit"><i class="fa fa-search"></i></button>
               </form>
             </li>
+            <li class="nav-container-items"><a id="navbar-signin" href="index 2.html">Sign In</a></li>
           </ul>
         </div>
       </nav>
@@ -68,7 +69,15 @@
           </div>
       </div>
     </main>
-    <footer>@all rights reserved by William Ingo 2023</footer>
+    <footer>
+      <div class="footer-container">
+        <div class="footer-signinsection">
+          <a href="index 2.html">
+            <button id="footer-signin-button">Sign In</button>
+          </a>
+        </div>
+        <div class="footer-links">@all rights reserved by William Ingo 2023</div>
+      </div></footer>
     <script src="script.js" defer></script>
   </body>
 </html>

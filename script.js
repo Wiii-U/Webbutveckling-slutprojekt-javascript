@@ -21,64 +21,65 @@ const imgURL = "https://image.tmdb.org/t/p/w500";
 
 // Get Filter variables
 const searchText = document.getElementById("txtSearch");
+const searchBtn = document.getElementById("searchBtn");
 const searchFilter = document.getElementById("filterMovies");
 const resultTitle = document.getElementById("resultTitle");
 const trendingMoviesFilter = document.getElementById("filterBtn");
 const trendingMovies = document.getElementById("trendingMovies");
-const searchbar = document.getElementById('searchbar');
+const searchbar = document.getElementById("searchbar");
 
 // Gömmer resultatrubrikerna, innan sökning
 trendingMovies.style.display = "none";
 resultTitle.style.display = "none";
 
-trendingMoviesFilter.onclick = async function (event) {
-  event.preventDefault()
+// trendingMoviesFilter.onclick = async function (event) {
+//   event.preventDefault()
 
-  var results = await searchTrending(trendingMovieURL); 
+//   var results = await searchTrending(trendingMovieURL); 
   
-  renderPopularMovies(results);
-  trendingMovies.style.display = "block";
-  resultTitle.style.display = "none";
-}
+//   renderPopularMovies(results);
+//   trendingMovies.style.display = "block";
+//   resultTitle.style.display = "none";
+// }
 
 searchText.onkeydown = async function (event) {
   if (searchText.value != "") {
-      if (event.key === "Enter") {
-          event.preventDefault()
+    if (event.key === "Enter" || searchBtn.clicked == true) {
+      event.preventDefault()
 
-          let searchTerm = searchText.value; // Hämtar det som står i sökrutan
-          console.log("Kommer söka efter", searchTerm);
+      let searchTerm = searchText.value; // Hämtar det som står i sökrutan
+      console.log("Kommer söka efter", searchTerm);
 
-          // Det här anropas funktionen för att hämta info från ett API.
-          // Vi väntar på svaret med await
-          var results = await search(searchTerm);
-          if (searchFilter.value === "none") {
-            renderUnfilteredResults(results);
-          }
-          else if (searchFilter.value === "movie") {
-            renderMovieResults(results);
-          }
-          else if(searchFilter.value === "tvShows") {
-            renderTVshowsResults(results);
-          }
-          else if(searchFilter.value === "celeb") {
-            renderCelebResults(results);
-          }
-          
-          resultTitle.style.display = "block";
-          searchText.value = "";
-          trendingMovies.style.display = "none";
+      // Det här anropas funktionen för att hämta info från ett API.
+      // Vi väntar på svaret med await
+      var results = await search(searchTerm);
+      if (searchFilter.value === "all") {
+        renderUnfilteredResults(results);
+      }
+      else if (searchFilter.value === "movie") {
+        renderMovieResults(results);
+      }
+      else if(searchFilter.value === "tvShows") {
+        renderTVshowsResults(results);
+      }
+      else if(searchFilter.value === "celeb") {
+        renderCelebResults(results);
+      }
+      
+      resultTitle.style.display = "block";
+      searchText.value = "";
+      trendingMovies.style.display = "none";
     }
   }
 }
 
 async function searchTrending(trendingSearchUrl) {
-    console.log("Den URL kommer vi att anropa: ", trendingSearchUrl)
+  console.log("Den URL kommer vi att anropa: ", trendingSearchUrl)
 
-    let response = await fetch(trendingSearchUrl)
+  let response = await fetch(trendingSearchUrl)
 
-    let json = await response.json()
-    return json
+  let json = await response.json()
+  return json
 } 
 
 // Detta är en asynkron funktion som anropar ett API och returnerar svaret som ett JSON-objekt.
@@ -195,11 +196,11 @@ function renderPopularMovies(results) {
 const objectImg = document.getElementById('objectImg');
 const objectInfoContainer = document.getElementById('objectInfoContainer');
 
-objectImg.onclick = function (e) {
-  e.preventDefault()
+// objectImg.onclick = function (e) {
+//   e.preventDefault()
 
-  objectInfoContainer.style.opacity = '1';
-}
+//   objectInfoContainer.style.opacity = '1';
+// }
 
 /* Open */
 function openBurgNav() {

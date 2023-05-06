@@ -19,6 +19,20 @@ body {
   flex-direction: column;
 }
 
+header {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  box-shadow: 0 1px 4px rgba(137, 153, 170, 0.37);
+  background-color: #000000;
+}
+
 h1 {
     margin: 0;
     max-width: 100%;
@@ -31,13 +45,19 @@ a {
   color: inherit;
   display: block;
   padding: 8px 16px;
+  font-size: 18px;
+}
+
+a#navbar-signin {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: white;
+  padding: 0;
 }
 
 .navbar {
   display: block;
   width: 100%;
   height: fit-content;
-  box-shadow: 0 1px 4px rgba(137, 153, 170, 0.37);
 }
 
 ul.navbar-menu {
@@ -69,6 +89,7 @@ ul.navbar-menu {
   font-size: 2rem;
   font-family: 'Cormorant Garamond', serif;
   font-family: 'Josefin Sans', sans-serif;
+  color: white;
 }
 
 /* The Overlay (background) */
@@ -120,6 +141,7 @@ ul.navbar-menu {
 
 .burgerOpenBtn {
   font-size: 30px;
+  color: white;
 }
 
 /* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
@@ -148,27 +170,51 @@ main {
 
 .rounded {
   color: #000000;
-  border-color: #000000;
-  border-width: 2px;
+  border-color: #ffffff;
+  border-width: 1px;
+  border-top-left-radius:4px;
+  border-bottom-left-radius:4px;
+  height: 100%;
+  border-right-color: #00000049;
 }
 
+.rounded:focus {
+  outline: none;
+}
 
 #objectContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 20%;
     float: left;
     margin-bottom: 20px;
     padding:0 10px;
     text-align: center;
-    font-size: 18px;
     margin-top: 20px;
 }
 
+#objectImg {
+  padding: 4px 8px;
+}
+
+#objectName {
+  padding: 4px 8px;
+  font-size: 20px;
+}
+
 #objectContainer img {
-    width: 80%;
+    width: 90%;
+    height: 90%;
+    transition-timing-function: ease;
+    transition: 0.3s;
+    transform: scale(1);
 }
 
 #objectContainer img:hover {
-  width: 90%;
+  transform: scale(1.05);
+  transition: 0.35s;
   cursor: pointer;
 }
 
@@ -251,12 +297,43 @@ main {
     display: inline-block;
     position: relative;
     height: 35px;
-    width: 200px;
+    width: 400px;
     box-sizing: border-box;
     padding: 7px 9px 0px 9px;
-    border: 2px solid #000000;
-    border-radius: 3px;
+    border: 1px solid #ffffff;
+    border-left-color: #00000049;
+    border-right-color: #00000049;
     cursor: text;
+    background-color: white;
+}
+
+#searchBtn {
+  height: 35px;
+  width: 40px;
+  background-color:white;
+  color: #000000;
+  border-width: 1px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  padding: 0;
+  background: #ffffff;
+  color: rgb(0, 0, 0);
+  font-size: 17px;
+  border: 1px solid rgb(255, 255, 255);
+  border-left: none;
+  cursor: pointer;
+}
+
+#searchBtn:hover {
+  background: #afafaf;
+  color: #ffffff;
+  border-color: #afafaf;
+}
+
+#searchBtn::after {
+  content: "";
+  clear: both;
+  display: table;
 }
 
 #txtSearch:focus::placeholder {
@@ -268,20 +345,22 @@ main {
   border: none;
   box-sizing: border-box;
   font-size: 15px;
-  color: inherit;
-  background: transparent;
-  outline-width: 0px;
+  color: black;
+  outline-width: 0px
 }
 
 form {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: flex-start;
+  height: 100%;
+  width: 100%;
 }
 
 .filterContainer {
   display: block;
+  height: 35px;
 }
 
 .glitchBtn,
@@ -388,15 +467,32 @@ footer {
   display: flex;
   flex-wrap:nowrap;
   align-items: center;
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #000000;
+  color: #ffffff;
   padding: 1em;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 10px;
   margin-top: auto;
   flex-direction: column;
   justify-content: center;
   padding: 0;
+}
+
+#footer-signin-button {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  border-radius: 6px;
+  height: 35px;
+  width: 200px;
+  font-size: 18px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#footer-signin-button:hover {
+  cursor: pointer;
+}
+
+#footer-links {
+  display: flex;
 }
