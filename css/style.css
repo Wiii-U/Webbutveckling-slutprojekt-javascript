@@ -1,0 +1,558 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+p {
+    margin: 0 auto;
+    padding: 0;
+}
+
+body {
+  background: rgb(255, 255, 255);
+  box-sizing: border-box;
+  font-family: 'Cormorant Garamond', serif;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  box-shadow: 0 1px 4px rgba(137, 153, 170, 0.37);
+  background-color: #000000;
+}
+
+h1 {
+    margin: 0;
+    max-width: 100%;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  padding: 8px 16px;
+  font-size: 18px;
+}
+
+a#navbar-signin {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: white;
+  padding: 0;
+}
+
+a#navbar-signin:hover {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: rgb(163, 163, 163);
+  padding: 0;
+}
+
+.navbar {
+  display: block;
+  width: 100%;
+  height: fit-content;
+}
+
+ul.navbar-menu {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.nav-container-items {
+  display: inline;
+  padding: 8px 16px;
+}
+
+@media screen and (max-width:600px){
+  ul.navbar-menu {
+    flex-direction: column;
+  }
+}
+
+#Title {
+  padding: 8px 16px;
+  height: 100%;
+  width: 100%;
+  font-size: 2rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Josefin Sans', sans-serif;
+  color: white;
+}
+
+/* The Overlay (background) */
+.overlay {
+  /* Height & width depends on how you want to reveal the overlay (see JS below) */   
+  height: 0;
+  width: 100%;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  background-color: rgb(0,0,0); /* Black fallback color */
+  background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+  position: relative;
+  top: 25%; /* 25% from the top */
+  width: 100%; /* 100% width */
+  text-align: center; /* Centered text/links */
+  margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+}
+
+/* The navigation links inside the overlay */
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block; /* Display block instead of inline */
+  transition: 0.3s; /* Transition effects on hover (color) */
+}
+
+/* When you mouse over the navigation links, change their color */
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+.burgerOpenBtn {
+  font-size: 30px;
+  color: white;
+}
+
+/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+
+h2 {
+    padding: 20px 5px;
+    margin: 0;
+    text-align: center;
+}
+
+main {
+    height: 70%;
+}
+
+.searchBar {
+    align-items: center;
+}
+
+.rounded {
+  color: #000000;
+  border-color: #ffffff;
+  border-width: 1px;
+  border-top-left-radius:4px;
+  border-bottom-left-radius:4px;
+  height: 100%;
+  border-right-color: #00000049;
+}
+
+.rounded:focus {
+  outline: none;
+}
+
+#objectContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    float: left;
+    margin-bottom: 20px;
+    padding:0 10px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#objectImg {
+  padding: 4px 8px;
+}
+
+#objectName {
+  padding: 4px 8px;
+  font-size: 20px;
+}
+
+#objectContainer img {
+    width: 90%;
+    height: 90%;
+    transition-timing-function: ease;
+    transition: 0.3s;
+    transform: scale(1);
+}
+
+#objectContainer img:hover {
+  transform: scale(1.05);
+  transition: 0.35s;
+  cursor: pointer;
+}
+
+#objectInfoContainer {
+  width: 0%;
+  height: 0%;
+  opacity: 0;
+  display: inline;
+  z-index: 10;
+  color: #000000;
+  background-color: white;
+  font-size: 24px;
+}
+
+#objectInfoImg {
+  float: left;
+  width: 25%;
+  display: block;
+}
+
+#objectInfoImg img {
+  float: left;
+  width: 25%;
+  display: block;
+}
+
+#objectInfoTitle {
+  display: block;
+  float: left;
+  width: 15%;
+}
+
+#objectInfoPlot {
+  float: left;
+  width: 70%;
+}
+
+#searchresults {
+    width:100%;
+    height:100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+#searchresults::after {
+    display: table;
+    clear: both;
+    content: "";
+}
+
+@media screen and (max-width:1600px){
+    #objectContainer {
+        width: 33%;
+    }
+}
+
+@media screen and (max-width:998px){
+    #objectContainer {
+        width: 48%;
+        display: block;
+        margin-bottom: 20px;
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width:600px){
+    #objectContainer {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+        font-size: 20px;
+    }
+}
+
+.search {
+    display: inline-block;
+    position: relative;
+    height: 35px;
+    width: 400px;
+    box-sizing: border-box;
+    padding: 7px 9px 0px 9px;
+    border: 1px solid #ffffff;
+    border-left-color: #00000049;
+    border-right-color: #00000049;
+    cursor: text;
+    background-color: white;
+}
+
+#searchBtn {
+  height: 35px;
+  width: 40px;
+  background-color:white;
+  color: #000000;
+  border-width: 1px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  padding: 0;
+  background: #ffffff;
+  color: rgb(0, 0, 0);
+  font-size: 17px;
+  border: 1px solid rgb(255, 255, 255);
+  border-left: none;
+  cursor: pointer;
+}
+
+#searchBtn:hover {
+  background: #afafaf;
+  color: #ffffff;
+  border-color: #afafaf;
+}
+
+#searchBtn::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+#txtSearch:focus::placeholder {
+  color: transparent;
+}
+
+#txtSearch {
+  width: 100%;
+  border: none;
+  box-sizing: border-box;
+  font-size: 15px;
+  color: black;
+  outline-width: 0px
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+  width: 100%;
+}
+
+.filterContainer {
+  display: block;
+  height: 35px;
+}
+
+.glitchBtn,
+.glitchBtn:after {
+  width: 150px;
+  height: 76px;
+  line-height: 78px;
+  font-size: 20px;
+  font-family: 'Bebas Neue', sans-serif;
+  background: linear-gradient(45deg, transparent 5%, #FF013C 5%);
+  border: 0;
+  color: #fff;
+  letter-spacing: 3px;
+  box-shadow: 6px 0px 0px #00E6F6;
+  outline: transparent;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.glitchBtn:after {
+  --slice-0: inset(50% 50% 50% 50%);
+  --slice-1: inset(80% -6px 0 0);
+  --slice-2: inset(50% -6px 30% 0);
+  --slice-3: inset(10% -6px 85% 0);
+  --slice-4: inset(40% -6px 43% 0);
+  --slice-5: inset(80% -6px 5% 0);
+  
+  content: 'FILTERED';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 3%, #00E6F6 3%, #00E6F6 5%, #FF013C 5%);
+  text-shadow: -3px -3px 0px #F8F005, 3px 3px 0px #00E6F6;
+  clip-path: var(--slice-0);
+}
+
+.glitchBtn:hover:after {
+  animation: 1s glitch;
+  animation-timing-function: steps(2, end);
+}
+
+@keyframes glitch {
+  0% {
+    clip-path: var(--slice-1);
+    transform: translate(-20px, -10px);
+  }
+  10% {
+    clip-path: var(--slice-3);
+    transform: translate(10px, 10px);
+  }
+  20% {
+    clip-path: var(--slice-1);
+    transform: translate(-10px, 10px);
+  }
+  30% {
+    clip-path: var(--slice-3);
+    transform: translate(0px, 5px);
+  }
+  40% {
+    clip-path: var(--slice-2);
+    transform: translate(-5px, 0px);
+  }
+  50% {
+    clip-path: var(--slice-3);
+    transform: translate(5px, 0px);
+  }
+  60% {
+    clip-path: var(--slice-4);
+    transform: translate(5px, 10px);
+  }
+  70% {
+    clip-path: var(--slice-2);
+    transform: translate(-10px, 10px);
+  }
+  80% {
+    clip-path: var(--slice-5);
+    transform: translate(20px, -10px);
+  }
+  90% {
+    clip-path: var(--slice-1);
+    transform: translate(-10px, 0px);
+  }
+  100% {
+    clip-path: var(--slice-1);
+    transform: translate(0);
+  }
+}
+
+@media (min-width: 768px) {
+  .glitchBtn,
+  .glitchBtn:after {
+    width: 200px;
+    height: 86px;
+    line-height: 88px;
+  }
+}
+
+footer {
+  display: flex;
+  flex-wrap:nowrap;
+  align-items: center;
+  background-color: #ffee00;
+  color: #000000;
+  padding: 1em;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0;
+}
+
+.footer-logo {
+  margin-top: 10px;
+  color: #000000;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  border-top: 3px solid black;
+  align-items: center;
+  justify-content: center;
+}
+
+.credits {
+  width: 80%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  box-shadow:  2px 2px 2px 4px rgba(88, 87, 73, 0.616);
+}
+
+.footer-signinsection {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid black;
+  text-align: left;
+  padding: 8px;
+}
+
+
+td, th:hover {
+  text-decoration: underline;
+}
+
+tr:nth-child(even) {
+  background-color: #af9a43;
+}
+
+#footer-signin-button {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  box-shadow:1px 1px 1px 2px rgba(88, 87, 73, 0.616);
+  height: 35px;
+  width: 200px;
+  font-size: 18px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#footer-signin-button:hover {
+  cursor: pointer;
+  background-color: #000000;
+  color: white;
+}
+
+.footer-links {
+  text-align: center;
+  font-size: 1.2rem;
+  font-family: 'Courier New', Courier, monospace;
+}

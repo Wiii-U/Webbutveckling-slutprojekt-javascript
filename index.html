@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Homepage</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap" rel="stylesheet">
@@ -36,7 +36,7 @@
               <!-- Use any element to open/show the overlay navigation menu -->
               <span class="burgerOpenBtn" style="cursor:pointer" onclick="openBurgNav()">&#9776;</span>
             </li> 
-            <!-- <li class="nav-container-items"><button id="filterBtn" class="glitchBtn" role="button">Popular</button></li> -->
+            <li class="nav-container-items"><button id="filterBtn" class="glitchBtn" role="button">Popular</button></li>
             <li class="nav-container-items">
               <form>
                 <!--FilterCategory-->
@@ -55,6 +55,7 @@
               </form>
             </li>
             <li class="nav-container-items"><a id="navbar-signin" href="index 2.html">Sign In</a></li>
+            <li class="nav-container-items"><a id="navbar-signin" href="#">Contact</a></li>
           </ul>
         </div>
       </nav>
@@ -71,13 +72,44 @@
     </main>
     <footer>
       <div class="footer-container">
+        <div class="footer-logo"><h1>TheaterHub</h1></div>
         <div class="footer-signinsection">
           <a href="index 2.html">
             <button id="footer-signin-button">Sign In</button>
           </a>
         </div>
+        <div class="credits">
+          <table>
+            <tr>
+              <th>Site Sections</th>
+              <th>Responsible</th>
+              <th>Country</th>
+            </tr>
+            <tr>
+              <td>CSS</td>
+              <td>Mwut da heel</td>
+              <td>Germany</td>
+            </tr>
+            <tr>
+              <td>HTML</td>
+              <td>Francisco Chang</td>
+              <td>Mexico</td>
+            </tr>
+            <tr>
+              <td>SECOND CSS</td>
+              <td>Roland Mendel</td>
+              <td>Austria</td>
+            </tr>
+            <tr>
+              <td>Javasript</td>
+              <td>Mr Bennett</td>
+              <td>UK</td>
+            </tr>
+          </table>
+        </div>
         <div class="footer-links">@all rights reserved by William Ingo 2023</div>
-      </div></footer>
+      </div>
+    </footer>
     <script src="script.js" defer></script>
   </body>
 </html>

@@ -32,15 +32,15 @@ const searchbar = document.getElementById("searchbar");
 trendingMovies.style.display = "none";
 resultTitle.style.display = "none";
 
-// trendingMoviesFilter.onclick = async function (event) {
-//   event.preventDefault()
+trendingMoviesFilter.onclick = async function (event) {
+  event.preventDefault()
 
-//   var results = await searchTrending(trendingMovieURL); 
+  var results = await searchTrending(trendingMovieURL); 
   
-//   renderPopularMovies(results);
-//   trendingMovies.style.display = "block";
-//   resultTitle.style.display = "none";
-// }
+  renderPopularMovies(results);
+  trendingMovies.style.display = "block";
+  resultTitle.style.display = "none";
+}
 
 searchText.onkeydown = async function (event) {
   if (searchText.value != "") {
