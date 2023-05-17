@@ -59,10 +59,10 @@ searchText.onkeydown = async function (event) {
       else if (searchFilter.value === "movie") {
         renderMovieResults(results);
       }
-      else if(searchFilter.value === "tvShows") {
+      else if (searchFilter.value === "tvShows") {
         renderTVshowsResults(results);
       }
-      else if(searchFilter.value === "celeb") {
+      else if (searchFilter.value === "celeb") {
         renderCelebResults(results);
       }
       
@@ -95,7 +95,6 @@ async function search(searchString) {
   else if (searchFilter.value === "celeb") {
     searchUrl = searchPerson + `${searchString}`;
   }
-  
   console.log("Den URL vi kommer anropa: ", searchUrl)
 
   //Här används URLen för att göra anrop med den inbyggda funktionen fetch()
@@ -168,7 +167,7 @@ function renderCelebResults(results) {
   // Den här loopen används för att lägga in något i DOMen för varje objekt (film) i resultatet.
   for (let index = 0; index < allObjects.length; index++) {
     const object = allObjects[index];
-    const imgPath = imgURL + object.poster_path;
+    const imgPath = imgURL;
     console.log(imgPath);
     console.log("loopar igenom objekten ", object);
     // resultDiv.insertAdjacentHTML("beforeend","<div id='objectContainer'>" + "<div id='objectImg'>" +"<img src=" + imgPath +" width:25%;>" +"</div>" + "<div id='objectName'>" + object.name + "</div>"+ "</div>")
@@ -186,7 +185,6 @@ function renderPopularMovies(results) {
     for (let index = 0; index < allObjects.length; index++) {
       const object = allObjects[index];
       const imgPath = imgURL + object.poster_path;
-      console.log(imgPath);
       console.log("loopar igenom objekten ", object);
       resultDiv.insertAdjacentHTML("beforeend","<div id='objectContainer'>" + "<div id='objectImg'>" +"<img src=" + imgPath +" width:25%;>" +"</div>" + "<div id='objectName'>" + object.original_title + "</div>" + "</div>");
       resultDiv.insertAdjacentHTML("beforeend","<div id='objectInfoContainer'>" + "<div id='objectInfoImg'>" + "<img src=" + imgPath +" width:25%>" + "</div>" + "<div id='objectInfoTitle'" + object.original_title + " " + object.release_date + "</div>" + "<div id='objectInfoPlot'" + object.overview + "</div>" + "</div>");
@@ -202,12 +200,12 @@ const objectInfoContainer = document.getElementById('objectInfoContainer');
 //   objectInfoContainer.style.opacity = '1';
 // }
 
-/* Open */
+/* Visar burger menyn */
 function openBurgNav() {
   document.getElementById("myNav").style.height = "100%";
 }
 
-/* Close */
+/* "Stänger" burger menyn */
 function closeBurgNav() {
   document.getElementById("myNav").style.height = "0%";
 }

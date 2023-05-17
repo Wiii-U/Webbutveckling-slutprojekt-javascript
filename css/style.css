@@ -167,7 +167,7 @@ h2 {
 }
 
 main {
-    height: 70%;
+  height: 70%;
 }
 
 .searchBar {
@@ -473,8 +473,8 @@ footer {
   display: flex;
   flex-wrap:nowrap;
   align-items: center;
-  background-color: #ffee00;
-  color: #000000;
+  background-color: #000000;
+  color: #fffefe;
   padding: 1em;
   width: 100%;
   margin-left: auto;
@@ -487,7 +487,7 @@ footer {
 
 .footer-logo {
   margin-top: 10px;
-  color: #000000;
+  color: #ffffff;
 }
 
 .footer-container {
@@ -532,7 +532,7 @@ td, th:hover {
 }
 
 tr:nth-child(even) {
-  background-color: #af9a43;
+  background-color: #9b9b9b;
 }
 
 #footer-signin-button {
@@ -543,12 +543,14 @@ tr:nth-child(even) {
   width: 200px;
   font-size: 18px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  transition: ease-in-out 0.1s;
 }
 
 #footer-signin-button:hover {
   cursor: pointer;
-  background-color: #000000;
-  color: white;
+  background-color: #dfdfdf;
+  border-bottom: 3px solid white;
+  transform:scale(1.1);
 }
 
 .footer-links {
