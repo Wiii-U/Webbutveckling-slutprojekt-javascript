@@ -1,0 +1,169 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+  }
+  body{
+    width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
+  }
+
+  header {
+    width: 100%;
+    text-align: center;
+    box-shadow: 2px 2px 7px 1px rgb(58, 54, 54);
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    padding: 8px 16px;
+  }
+
+  h2 {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    color: black;
+    margin-bottom: 8px;
+  }
+
+  h2::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+
+  h2:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    text-align: center;
+  }
+
+  a:visited {
+    text-decoration: none;
+  }
+
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%; 
+}
+
+.container::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-size: cover;
+    z-index: -1;
+}
+
+.infotxt {
+    margin: 20px;
+}
+
+.contact-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+    margin: 20px;    
+    border: 2px solid transparent;
+    border-radius: 3px;
+    box-shadow:4px 1px 4px 6px rgb(58, 54, 54);
+}
+
+#left-field {
+    position: relative;
+    width: 50%;
+    height: 100%;
+}
+
+#left-field :only-child {
+    width: 100%;
+    height: 100%;
+    padding: 8px 16px;
+}
+
+#right-field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 50%;
+    height: 100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+form input {
+    width: 100%;
+    padding: 4px 8px;
+}
+
+form textarea {
+    width: 100%;
+    padding: 4px 8px;
+}
+
+#submitBtn {
+    width: 100%;
+    border: 2px double black;
+    background-color: rgb(186, 186, 186);
+    color: black;
+    font-size: 30px;
+    transition:0.5s;
+}
+
+#submitBtn:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+iframe {
+    width: 100%;
+}
+
+.map {
+    width: 80%;
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width:600px) {
+    #right-field h2 {
+        font-size: 18px;
+    }
+    #submitBtn {
+        font-size: 18px;
+    }
+}
