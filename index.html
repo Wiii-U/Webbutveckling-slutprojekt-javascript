@@ -15,7 +15,20 @@
   </head>
   <body>
     <header>
-      <a href="index.html"><h1 id="Title">TheaterHub</h1></a>
+      <section id="headerFirstSection">
+        <a href="index.html"><h1 id="Title">TheaterHub</h1></a>
+        <div id="mySecNav" class="overlay">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeSecBurgNav()">&times;</a>
+
+            <!-- Overlay content -->
+            <div class="overlay-content">
+              <a href="index 2.html">Sign In</a>
+              <a href="index 3.html">About</a>
+              <a href="index 4.html">Contact Us</a>
+            </div>
+        </div>
+        <span id="burgerSecOpenBtn" class="burgerOpenBtn" onclick="openSecBurgNav()">&#9776;</span>
+      </section>
       <nav>
         <div class="navbar">
           <ul class="navbar-menu">
@@ -29,14 +42,14 @@
                 <!-- Overlay content -->
                 <div class="overlay-content">
                   <a href="index 3.html">About</a>
+                  <a href="index 4.html">Contact Us</a>
                 </div>
 
               </div>
 
               <!-- Use any element to open/show the overlay navigation menu -->
-              <span class="burgerOpenBtn" style="cursor:pointer" onclick="openBurgNav()">&#9776;</span>
+              <span id="burgerOpenBtn" class="burgerOpenBtn" onclick="openBurgNav()">&#9776;</span>
             </li> 
-            <li class="nav-container-items"><button id="filterBtn" class="glitchBtn" role="button">Popular</button></li>
             <li class="nav-container-items">
               <form>
                 <!--FilterCategory-->
@@ -55,7 +68,6 @@
               </form>
             </li>
             <li class="nav-container-items"><a id="navbar-signin" href="index 2.html">Sign In</a></li>
-            <li class="nav-container-items"><a id="navbar-signin" href="#">Contact</a></li>
           </ul>
         </div>
       </nav>
@@ -63,11 +75,15 @@
     <main>
       <div class="searchBar" id="searchbar">
           <!--Results-->
+        <section>
           <h2 id="trendingMovies">Current Popular Movies</h2>
           <h2 id="resultTitle">Results</h2>
+        </section>
+        <section>
           <div class="searchResults">
             <div id="searchresults"></div>
           </div>
+        </section>
       </div>
     </main>
     <footer>

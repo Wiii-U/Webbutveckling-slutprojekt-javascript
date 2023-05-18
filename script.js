@@ -24,7 +24,6 @@ const searchText = document.getElementById("txtSearch");
 const searchBtn = document.getElementById("searchBtn");
 const searchFilter = document.getElementById("filterMovies");
 const resultTitle = document.getElementById("resultTitle");
-const trendingMoviesFilter = document.getElementById("filterBtn");
 const trendingMovies = document.getElementById("trendingMovies");
 const searchbar = document.getElementById("searchbar");
 
@@ -32,14 +31,16 @@ const searchbar = document.getElementById("searchbar");
 trendingMovies.style.display = "none";
 resultTitle.style.display = "none";
 
-trendingMoviesFilter.onclick = async function (event) {
-  event.preventDefault()
+if ( searchFilter.value === "all") {
+    window.onload = async function (event) {
+    event.preventDefault()
 
-  var results = await searchTrending(trendingMovieURL); 
-  
-  renderPopularMovies(results);
-  trendingMovies.style.display = "block";
-  resultTitle.style.display = "none";
+    var results = await searchTrending(trendingMovieURL); 
+    
+    renderPopularMovies(results);
+    trendingMovies.style.display = "block";
+    resultTitle.style.display = "none";
+  }
 }
 
 searchText.onkeydown = async function (event) {
@@ -53,10 +54,7 @@ searchText.onkeydown = async function (event) {
       // Det här anropas funktionen för att hämta info från ett API.
       // Vi väntar på svaret med await
       var results = await search(searchTerm);
-      if (searchFilter.value === "all") {
-        renderUnfilteredResults(results);
-      }
-      else if (searchFilter.value === "movie") {
+      if (searchFilter.value === "movie") {
         renderMovieResults(results);
       }
       else if (searchFilter.value === "tvShows") {
@@ -105,24 +103,6 @@ async function search(searchString) {
   return json
 }
 
-function renderUnfilteredResults(results) {
-  let resultDiv = document.getElementById("searchresults")
-
-  console.log("resultatet: ", results);
-
-  let allObjects = results.results;
-  resultDiv.innerHTML = "";
-
-  // Den här loopen används för att lägga in något i DOMen för varje objekt (film) i resultatet.
-  for (let index = 0; index < allObjects.length; index++) {
-    const object = allObjects[index];
-    const imgPath = imgURL + object.poster_path;
-    console.log(imgPath);
-    console.log("loopar igenom objekten ", object);
-    resultDiv.insertAdjacentHTML("beforeend","<div id='objectContainer'>" + "<div id='objectImg'>" +"<img src=" + imgPath +" width:25%;>" +"</div>" + "<div id='objectName'>" + object.original_title + "</div>"+ "</div>")
-  }
-}
-
 function renderMovieResults(results) {
   let resultDiv = document.getElementById("searchresults");
 
@@ -153,6 +133,7 @@ function renderTVshowsResults(results) {
     const imgPath = imgURL + object.poster_path;
     console.log(imgPath);
     console.log("loopar igenom objekten ", object);
+    resultDiv.insertAdjacentHTML("beforeend","<div id='objectContainer'>" + "<div id='objectImg'>" +"<img src=" + imgPath +" width:25%;>" +"</div>" + "<div id='objectName'>" + object.name + "</div>"+ "</div>")
     resultDiv.insertAdjacentHTML("beforeend","<div id='objectInfoContainer'>" + "<div id='objectInfoImg'>" + "<img src=" + imgPath +"width='25%'>" + "</div>" + "<div id='objectInfoTitle'" + object.original_title + " " + object.release_date + "</div>" + "<div id='objectInfoPlot'" + object.overview + "</div>" + "</div>" + "<div id='objectContainer'>" + "<div id='objectImg'>" +"<img src=" + imgPath +" width:25%;>" +"</div>" + "<div id='objectName'>" + object.original_title + "</div>" + "</div>" );
   }
 }
@@ -164,7 +145,7 @@ function renderCelebResults(results) {
   let allObjects = results.results;
   resultDiv.innerHTML = "";
 
-  // Den här loopen används för att lägga in något i DOMen för varje objekt (film) i resultatet.
+  // Den här loopen används för att lägga in något i DOMen för varje objekt i resultatet.
   for (let index = 0; index < allObjects.length; index++) {
     const object = allObjects[index];
     const imgPath = imgURL;
@@ -194,12 +175,6 @@ function renderPopularMovies(results) {
 const objectImg = document.getElementById('objectImg');
 const objectInfoContainer = document.getElementById('objectInfoContainer');
 
-// objectImg.onclick = function (e) {
-//   e.preventDefault()
-
-//   objectInfoContainer.style.opacity = '1';
-// }
-
 /* Visar burger menyn */
 function openBurgNav() {
   document.getElementById("myNav").style.height = "100%";
@@ -208,4 +183,12 @@ function openBurgNav() {
 /* "Stänger" burger menyn */
 function closeBurgNav() {
   document.getElementById("myNav").style.height = "0%";
+}
+
+function openSecBurgNav() {
+  document.getElementById("mySecNav").style.height = "100%";
+}
+
+function closeSecBurgNav() {
+  document.getElementById("mySecNav").style.height = "0%";
 }

@@ -20,7 +20,7 @@ body {
 }
 
 header {
-  position: fixed;
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -31,6 +31,12 @@ header {
   z-index: 99;
   box-shadow: 0 1px 4px rgba(137, 153, 170, 0.37);
   background-color: #000000;
+  margin-bottom: 20px;
+}
+
+#headerFirstSection {
+  display: flex;
+  flex-direction: row;
 }
 
 h1 {
@@ -82,11 +88,6 @@ ul.navbar-menu {
   padding: 8px 16px;
 }
 
-@media screen and (max-width:600px){
-  ul.navbar-menu {
-    flex-direction: column;
-  }
-}
 
 #Title {
   padding: 8px 16px;
@@ -97,6 +98,8 @@ ul.navbar-menu {
   font-family: 'Josefin Sans', sans-serif;
   color: white;
 }
+
+
 
 /* The Overlay (background) */
 .overlay {
@@ -150,6 +153,14 @@ ul.navbar-menu {
   color: white;
 }
 
+#burgerSecOpenBtn {
+  display: none;
+}
+
+.burgerOpenBtn:hover {
+  cursor: pointer;
+}
+
 /* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
 @media screen and (max-height: 450px) {
   .overlay a {font-size: 20px}
@@ -161,7 +172,7 @@ ul.navbar-menu {
 }
 
 h2 {
-    padding: 20px 5px;
+    padding: 8px 16px;
     margin: 0;
     text-align: center;
 }
@@ -181,6 +192,7 @@ main {
   border-top-left-radius:4px;
   border-bottom-left-radius:4px;
   height: 100%;
+  width: 100%;
   border-right-color: #00000049;
 }
 
@@ -199,6 +211,7 @@ main {
     padding:0 10px;
     text-align: center;
     margin-top: 20px;
+    font-size: 20px;
 }
 
 #objectImg {
@@ -207,7 +220,6 @@ main {
 
 #objectName {
   padding: 4px 8px;
-  font-size: 20px;
 }
 
 #objectContainer img {
@@ -275,35 +287,13 @@ main {
     content: "";
 }
 
-@media screen and (max-width:1600px){
-    #objectContainer {
-        width: 33%;
-    }
-}
 
-@media screen and (max-width:998px){
-    #objectContainer {
-        width: 48%;
-        display: block;
-        margin-bottom: 20px;
-        font-size: 16px;
-    }
-}
-
-@media screen and (max-width:600px){
-    #objectContainer {
-        width: 100%;
-        display: block;
-        margin-bottom: 20px;
-        font-size: 20px;
-    }
-}
 
 .search {
     display: inline-block;
     position: relative;
     height: 35px;
-    width: 400px;
+    width: 75%;
     box-sizing: border-box;
     padding: 7px 9px 0px 9px;
     border: 1px solid #ffffff;
@@ -315,7 +305,7 @@ main {
 
 #searchBtn {
   height: 35px;
-  width: 40px;
+  width: 10%;
   background-color:white;
   color: #000000;
   border-width: 1px;
@@ -361,113 +351,16 @@ form {
   justify-content: center;
   align-items: flex-start;
   height: 100%;
-  width: 100%;
+  width: 500px;
+  margin: 0;
 }
 
 .filterContainer {
   display: block;
   height: 35px;
+  width: 15%;
 }
 
-.glitchBtn,
-.glitchBtn:after {
-  width: 150px;
-  height: 76px;
-  line-height: 78px;
-  font-size: 20px;
-  font-family: 'Bebas Neue', sans-serif;
-  background: linear-gradient(45deg, transparent 5%, #FF013C 5%);
-  border: 0;
-  color: #fff;
-  letter-spacing: 3px;
-  box-shadow: 6px 0px 0px #00E6F6;
-  outline: transparent;
-  position: relative;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-.glitchBtn:after {
-  --slice-0: inset(50% 50% 50% 50%);
-  --slice-1: inset(80% -6px 0 0);
-  --slice-2: inset(50% -6px 30% 0);
-  --slice-3: inset(10% -6px 85% 0);
-  --slice-4: inset(40% -6px 43% 0);
-  --slice-5: inset(80% -6px 5% 0);
-  
-  content: 'FILTERED';
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(45deg, transparent 3%, #00E6F6 3%, #00E6F6 5%, #FF013C 5%);
-  text-shadow: -3px -3px 0px #F8F005, 3px 3px 0px #00E6F6;
-  clip-path: var(--slice-0);
-}
-
-.glitchBtn:hover:after {
-  animation: 1s glitch;
-  animation-timing-function: steps(2, end);
-}
-
-@keyframes glitch {
-  0% {
-    clip-path: var(--slice-1);
-    transform: translate(-20px, -10px);
-  }
-  10% {
-    clip-path: var(--slice-3);
-    transform: translate(10px, 10px);
-  }
-  20% {
-    clip-path: var(--slice-1);
-    transform: translate(-10px, 10px);
-  }
-  30% {
-    clip-path: var(--slice-3);
-    transform: translate(0px, 5px);
-  }
-  40% {
-    clip-path: var(--slice-2);
-    transform: translate(-5px, 0px);
-  }
-  50% {
-    clip-path: var(--slice-3);
-    transform: translate(5px, 0px);
-  }
-  60% {
-    clip-path: var(--slice-4);
-    transform: translate(5px, 10px);
-  }
-  70% {
-    clip-path: var(--slice-2);
-    transform: translate(-10px, 10px);
-  }
-  80% {
-    clip-path: var(--slice-5);
-    transform: translate(20px, -10px);
-  }
-  90% {
-    clip-path: var(--slice-1);
-    transform: translate(-10px, 0px);
-  }
-  100% {
-    clip-path: var(--slice-1);
-    transform: translate(0);
-  }
-}
-
-@media (min-width: 768px) {
-  .glitchBtn,
-  .glitchBtn:after {
-    width: 200px;
-    height: 86px;
-    line-height: 88px;
-  }
-}
 
 footer {
   display: flex;
@@ -557,4 +450,69 @@ tr:nth-child(even) {
   text-align: center;
   font-size: 1.2rem;
   font-family: 'Courier New', Courier, monospace;
+}
+
+@media screen and (max-width:881px){
+  #Title {
+    font-size: 1.6rem;
+  }
+}
+
+@media screen and (max-width:791px){
+  #burgerOpenBtn {
+    display: none;
+  }
+  #burgerSecOpenBtn {
+    display: block;
+  }
+  ul.navbar-menu {
+    flex-direction: column;
+  }
+  .nav-container-items:last-of-type {
+    display: none;
+  }
+  header {
+    flex-direction: column;
+  }
+  form {
+    width: 350px;
+  }
+}
+@media screen and (max-width:1600px){
+    #objectContainer {
+        width: 25%;
+    }
+}
+
+@media screen and (max-width:1200px){
+  #objectContainer {
+      width: 33%;
+  }
+  form {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width:998px){
+    #objectContainer {
+        width: 48%;
+        display: block;
+        margin-bottom: 20px;
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width:600px){
+    #objectContainer {
+        width: 50%;
+        font-size: 18px;
+    }
+}
+
+
+@media screen and (max-width:400px){
+  #objectContainer {
+      width: 100%;
+      font-size: 20px;
+  }
 }
