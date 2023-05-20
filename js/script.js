@@ -31,7 +31,7 @@ const searchbar = document.getElementById("searchbar");
 trendingMovies.style.display = "none";
 resultTitle.style.display = "none";
 
-if ( searchFilter.value === "all") {
+if ( searchFilter.value === "all" && searchText.value === "") {
     window.onload = async function (event) {
     event.preventDefault()
 
@@ -61,6 +61,8 @@ searchText.onkeydown = async function (event) {
       }
       else if (searchFilter.value === "celeb") {
         renderCelebResults(results);
+      } else {
+        renderUnfilteredMovies(results);
       }
       
       resultTitle.style.display = "block";
@@ -124,7 +126,7 @@ function renderTVshowsResults(results) {
     const object = allObjects[index];
     const imgPath = imgURL + object.poster_path;
     resultDiv.insertAdjacentHTML("beforeend","<div id='objectContainer'>" + "<div id='objectImg'>" +"<img src=" + imgPath +" width:25%;>" +"</div>" + "<div id='objectName'>" + object.name + "</div>"+ "</div>")
-    resultDiv.insertAdjacentHTML("beforeend","<div id='objectInfoContainer'>" + "<div id='objectInfoImg'>" + "<img src=" + imgPath +"width='25%'>" + "</div>" + "<div id='objectInfoTitle'" + object.original_title + " " + object.release_date + "</div>" + "<div id='objectInfoPlot'" + object.overview + "</div>" + "</div>" + "<div id='objectContainer'>" + "<div id='objectImg'>" +"<img src=" + imgPath +" width:25%;>" +"</div>" + "<div id='objectName'>" + object.original_title + "</div>" + "</div>" );
+    resultDiv.insertAdjacentHTML("beforeend","<div id='objectInfoContainer'>" + "<div id='objectInfoImg'>" + "<img src=" + imgPath +"width='25%'>" + "</div>" + "<div id='objectInfoTitle'" + object.name + " " + object.release_date + "</div>" + "<div id='objectInfoPlot'" + object.overview + "</div>" + "</div>" + "<div id='objectContainer'>" + "<div id='objectImg'>" +"<img src=" + imgPath +" width:25%;>" +"</div>" + "<div id='objectName'>" + object.name + "</div>" + "</div>" );
   }
 }
 
@@ -137,8 +139,25 @@ function renderCelebResults(results) {
   // Den här loopen används för att lägga in något i DOMen för varje objekt i resultatet.
   for (let index = 0; index < allObjects.length; index++) {
     const object = allObjects[index];
-    const imgPath = imgURL;
-    // resultDiv.insertAdjacentHTML("beforeend","<div id='objectContainer'>" + "<div id='objectImg'>" +"<img src=" + imgPath +" width:25%;>" +"</div>" + "<div id='objectName'>" + object.name + "</div>"+ "</div>")
+    const imgPath = imgURL + object.profile_path;
+    console.log('kommer sölka efete', object)
+    console.log(imgPath);
+    resultDiv.insertAdjacentHTML("beforeend","<div id='objectContainer'>" + "<div id='objectImg'>" +"<img src=" + imgPath +" width:25%;>" +"</div>" + "<div id='objectName'>" + object.name + "</div>"+ "</div>")
+  }
+}
+
+function renderUnfilteredMovies(results) {
+  let resultDiv = document.getElementById("searchresults");
+
+  let allObjects = results.results;
+  resultDiv.innerHTML = "";
+
+  // Den här loopen används för att lägga in något i DOMen för varje objekt (film) i resultatet.
+  for (let index = 0; index < allObjects.length; index++) {
+    const object = allObjects[index];
+    const imgPath = imgURL + object.poster_path;
+    resultDiv.insertAdjacentHTML("beforeend","<div id='objectContainer'>" + "<div id='objectImg'>" +"<img src=" + imgPath +" width:25%;>" +"</div>" + "<div id='objectName'>" + object.original_title + "</div>" + "</div>");
+    resultDiv.insertAdjacentHTML("beforeend","<div id='objectInfoContainer'>" + "<div id='objectInfoImg'>" + "<img src=" + imgPath +" width:25%>" + "</div>" + "<div id='objectInfoTitle'" + object.original_title + " " + object.release_date + "</div>" + "<div id='objectInfoPlot'" + object.overview + "</div>" + "</div>");
   }
 }
 
